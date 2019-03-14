@@ -96,7 +96,6 @@ namespace Reproductor
             if (listViewSongs.SelectedItems.Count == 0)
                 return;
             listViewSongs.Focus();
-            //puto el que lo lea
             int s = listViewSongs.SelectedItems[0].Index;
 
             listViewSongs.Items[s].Selected = false;
