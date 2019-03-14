@@ -42,6 +42,7 @@
             this.labelAlbum = new System.Windows.Forms.Label();
             this.labelArtist = new System.Windows.Forms.Label();
             this.listViewSongs = new System.Windows.Forms.ListView();
+            this.btnCargar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,13 +175,22 @@
             this.listViewSongs.TabIndex = 8;
             this.listViewSongs.UseCompatibleStateImageBehavior = false;
             this.listViewSongs.SelectedIndexChanged += new System.EventHandler(this.listViewSongs_SelectedIndexChanged);
-            
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.Location = new System.Drawing.Point(48, 376);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(134, 47);
+            this.btnCargar.TabIndex = 9;
+            this.btnCargar.Text = "Cargar";
+            this.btnCargar.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 447);
+            this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.listViewSongs);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLast);
@@ -210,6 +220,7 @@
         private System.Windows.Forms.TextBox textAlbum;
         private System.Windows.Forms.TextBox textArtist;
         private System.Windows.Forms.ListView listViewSongs;
+        private System.Windows.Forms.Button btnCargar;
     }
 }
 

@@ -27,6 +27,7 @@ namespace Reproductor
 
         public void fillData(Random rand)
         {
+            //Llenar los datos de forma aleatoria
             String[] gn = new String[4];
             gn[0] = "Rock";
             gn[1] = "Pop";
