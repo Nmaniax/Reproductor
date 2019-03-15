@@ -43,6 +43,18 @@ namespace Reproductor
 
         }
 
+        public void extractData(String path)
+        {
+            TagLib.File tagFile = TagLib.File.Create(path);
+
+            Name = tagFile.Tag.Title;
+            Duration = tagFile.Properties.Duration.ToString(@"mm\:ss") ?? "00:00";
+            Artist = tagFile.Tag.FirstAlbumArtist;
+            Album = tagFile.Tag.Album;
+            Year = (int)tagFile.Tag.Year;
+            Genre = tagFile.Tag.FirstGenre ?? "Unknown";
+        }
+
         public String Name { get => name;
             set => name = value;
         }

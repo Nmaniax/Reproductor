@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnFirst = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
@@ -43,6 +44,10 @@
             this.labelArtist = new System.Windows.Forms.Label();
             this.listViewSongs = new System.Windows.Forms.ListView();
             this.btnCargar = new System.Windows.Forms.Button();
+            this.folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnPlay = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -184,12 +189,49 @@
             this.btnCargar.TabIndex = 9;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.BackgroundImage = global::Reproductor.Properties.Resources.Start;
+            this.btnPlay.Enabled = false;
+            this.btnPlay.Location = new System.Drawing.Point(360, 255);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(38, 36);
+            this.btnPlay.TabIndex = 12;
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Visible = false;
+            // 
+            // btnPause
+            // 
+            this.btnPause.BackgroundImage = global::Reproductor.Properties.Resources.pause1;
+            this.btnPause.Enabled = false;
+            this.btnPause.Location = new System.Drawing.Point(404, 255);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(38, 36);
+            this.btnPause.TabIndex = 11;
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Visible = false;
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnStop.BackgroundImage")));
+            this.btnStop.Enabled = false;
+            this.btnStop.Location = new System.Drawing.Point(316, 255);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(38, 36);
+            this.btnStop.TabIndex = 10;
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Visible = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 447);
+            this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.btnPause);
+            this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.listViewSongs);
             this.Controls.Add(this.groupBox1);
@@ -221,6 +263,10 @@
         private System.Windows.Forms.TextBox textArtist;
         private System.Windows.Forms.ListView listViewSongs;
         private System.Windows.Forms.Button btnCargar;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowser;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnPlay;
     }
 }
 

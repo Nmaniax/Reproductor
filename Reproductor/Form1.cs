@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Reproductor
 {
@@ -23,6 +24,14 @@ namespace Reproductor
             listViewSongs.Items[0].Selected = true;
         }
         
+
+        private void lvSetup()
+        {
+            //Activamos la vista por columnas y se agregan las dos columnas en sus respectivas posiciones
+            listViewSongs.View = View.Details;
+            listViewSongs.Columns.Add("Name", -2, HorizontalAlignment.Left);
+            listViewSongs.Columns.Add("Duration", -2, HorizontalAlignment.Left);
+        }
 
         private void createSongs()
         {
@@ -52,15 +61,6 @@ namespace Reproductor
                 listViewSongs.Items.Add(itm);
             }
         }
-
-        private void lvSetup()
-        {
-            //Activamos la vista por columnas y se agregan las dos columnas en sus respectivas posiciones
-            listViewSongs.View = View.Details;
-            listViewSongs.Columns.Add("Name", -2, HorizontalAlignment.Left);
-            listViewSongs.Columns.Add("Duration", -2, HorizontalAlignment.Left);
-        }
-
 
         private void btnFirst_Click(object sender, EventArgs e)
         {
@@ -140,6 +140,15 @@ namespace Reproductor
             textYear.Text = (listSong[ind].Year).ToString();
         }
 
+        private void clearMetadata()
+        {
+            //Se limpian las casillas de texto
+            textArtist.Text = "";
+            textAlbum.Text = "";
+            textGenre.Text = "";
+            textYear.Text = "";
+        }
+
         private void listViewSongs_SelectedIndexChanged(object sender, EventArgs e)
         {
             //Funcion que controla los clics en la lista
@@ -153,5 +162,58 @@ namespace Reproductor
                 Console.WriteLine("{0} Exception!", ex);
             }
         }
+
+        private void getSongsFiles(String[] sng)
+        {
+            listSong.Clear();
+            listViewSongs.Items.Clear();
+            foreach(var s in sng)
+            {
+                Songs song = new Songs();
+                song.extractData(s);
+                listSong.Add(song);
+            }
+        }
+
+        private void enableReproduction()
+        {
+            btnPlay.Enabled = true;
+            btnPlay.Visible = true;
+            btnPause.Enabled = true;
+            btnPause.Visible = true;
+            btnStop.Enabled = true;
+            btnStop.Visible = true;
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            folderBrowser.ShowNewFolderButton = true;
+            DialogResult result = folderBrowser.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                var path = folderBrowser.SelectedPath;
+                String[] songs = Directory.GetFiles(path, "*.mp3");
+
+                if(songs.Length > 0)
+                {
+                    getSongsFiles(songs);
+                    clearMetadata();
+                    showSongs();
+                    enableReproduction();
+                }
+                else
+                {
+                    String mess = "No mp3 files found";
+                    String caption = "No songs found";
+
+                    MessageBoxButtons btn = MessageBoxButtons.OK;
+                    DialogResult alert;
+                    alert = MessageBox.Show(mess, caption, btn);
+                }
+            }
+
+
+        }
+        
     }
 }
