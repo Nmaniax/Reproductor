@@ -163,9 +163,14 @@ namespace Reproductor
                 Console.WriteLine("{0} Exception!", ex);
             }
         }
-
+        /// <summary>
+        /// Esta funcion se encarga de cargar las canciones elegidas del explorador a la lista de canciones
+        /// </summary>
+        /// <param name="sng"> Es la lista de rutas de canciones encontradas al momento de la carca,
+        /// posteriormente será utilizada para conseguir los metadatos de cada mp3</param>
         private void getSongsFiles(String[] sng)
         {
+            
             listSong.Clear();
             listViewSongs.Items.Clear();
             foreach(var s in sng)
@@ -175,7 +180,9 @@ namespace Reproductor
                 listSong.Add(song);
             }
         }
-
+        /// <summary>
+        /// funcion que se encarga de activar los botones de reproduccion de mp3
+        /// </summary>
         private void enableReproduction()
         {
             btnPlay.Enabled = true;
@@ -185,18 +192,21 @@ namespace Reproductor
             btnStop.Enabled = true;
             btnStop.Visible = true;
         }
-
+        
         private void btnCargar_Click(object sender, EventArgs e)
         {
             folderBrowser.ShowNewFolderButton = true;
             DialogResult result = folderBrowser.ShowDialog();
             if (result == DialogResult.OK)
             {
+               //Se busca las rutas de archivos .mp3 y se guardan en una lista de Strings
                 var path = folderBrowser.SelectedPath;
                 String[] songs = Directory.GetFiles(path, "*.mp3");
 
                 if(songs.Length > 0)
                 {
+                    //Se agregan las canciones a la lista
+                    // se limpia la pantalla de metadata y se muestran la nueva lista.
                     getSongsFiles(songs);
                     clearMetadata();
                     showSongs();
@@ -204,6 +214,7 @@ namespace Reproductor
                 }
                 else
                 {
+                    //Se presenta un cuadro de error si la busqueda no devuelve nada
                     String mess = "No mp3 files found";
                     String caption = "No songs found";
 

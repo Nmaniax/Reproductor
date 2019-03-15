@@ -45,6 +45,11 @@ namespace Reproductor
 
         }
 
+        /// <summary>
+        /// Se extraen los datos de los archivos .mp3 directamente hacia el nuevo objeto Songs. que posteriormente será agregado
+        /// a una lista de tipo Songs.
+        /// </summary>
+        /// <param name="path"> Es la ruta del archivo a examinar de donde se sacaran los datos de la canción.</param>
         public void extractData(String path)
         {
             TagLib.File tagFile = TagLib.File.Create(path);
