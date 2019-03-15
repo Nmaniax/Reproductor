@@ -14,6 +14,7 @@ namespace Reproductor
     public partial class Form1 : Form
     {
         List<Songs> listSong = new List<Songs>();
+        ReproductionCtrl reproduction = new ReproductionCtrl();
 
         public Form1()
         {
@@ -212,8 +213,31 @@ namespace Reproductor
                 }
             }
 
-
         }
-        
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+
+            if (listViewSongs.SelectedItems.Count == 0)
+                return;
+
+            int s = listViewSongs.SelectedItems[0].Index;
+            
+            reproduction.playAction(listSong[s].Path);
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if (listViewSongs.SelectedItems.Count == 0)
+                return;
+            reproduction.stopAction();
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            if (listViewSongs.SelectedItems.Count == 0)
+                return;
+            reproduction.pauseAction();
+        }
     }
 }

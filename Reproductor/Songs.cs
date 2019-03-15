@@ -14,6 +14,7 @@ namespace Reproductor
         private String album;
         private int year;
         private String genre;
+        private String path;
         
         public Songs()
         {
@@ -23,6 +24,7 @@ namespace Reproductor
             album = "";
             year = 0;
             genre = "";
+            path = "";
         }
 
         public void fillData(Random rand)
@@ -53,6 +55,7 @@ namespace Reproductor
             Album = tagFile.Tag.Album;
             Year = (int)tagFile.Tag.Year;
             Genre = tagFile.Tag.FirstGenre ?? "Unknown";
+            Path = path;
         }
 
         public String Name { get => name;
@@ -77,6 +80,10 @@ namespace Reproductor
         public String Genre {
             get => genre;
             set => genre = value;
+        }
+        public String Path {
+            get => path;
+            set => path = value;
         }
     }
 }

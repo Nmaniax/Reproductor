@@ -201,6 +201,7 @@
             this.btnPlay.TabIndex = 12;
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Visible = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // btnPause
             // 
@@ -212,6 +213,7 @@
             this.btnPause.TabIndex = 11;
             this.btnPause.UseVisualStyleBackColor = true;
             this.btnPause.Visible = false;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnStop
             // 
@@ -223,6 +225,7 @@
             this.btnStop.TabIndex = 10;
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Visible = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // Form1
             // 
