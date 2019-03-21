@@ -13,7 +13,7 @@ namespace Reproductor
 {
     public partial class Form1 : Form
     {
-        List<Songs> listSong = new List<Songs>();
+        public List<Songs> listSong = new List<Songs>();
         ReproductionCtrl reproduction = new ReproductionCtrl();
 
         public Form1()
@@ -211,6 +211,7 @@ namespace Reproductor
                     clearMetadata();
                     showSongs();
                     enableReproduction();
+                    listViewSongs.Items[0].Selected = true;
                 }
                 else
                 {
@@ -249,6 +250,12 @@ namespace Reproductor
             if (listViewSongs.SelectedItems.Count == 0)
                 return;
             reproduction.pauseAction();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            FindForm busqueda = new FindForm(listSong);
+            busqueda.Show();
         }
     }
 }

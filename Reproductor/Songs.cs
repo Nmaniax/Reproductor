@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reproductor
 {
-    class Songs
+    public class Songs
     {
         private String name;
         private String duration;
